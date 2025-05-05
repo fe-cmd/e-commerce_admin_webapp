@@ -6,14 +6,25 @@ const jwt = require("jsonwebtoken");
 const multer = require("multer");
 const path = require("path");
 const cors = require("cors");
-const { type } = require("os");
-const { rmSync } = require("fs");
 
 app.use(express.json());
 app.use(cors());
 
 //Database Connect With MongoDB
 mongoose.connect("mongodb+srv://oluferonmijoshua:giF4BZ99DIiDogca@cluster0.11f1d.mongodb.net/e-commerce")
+
+// Serve CRA frontend (Engr)
+app.use(express.static(path.join(__dirname, "engr"))); // Serve the built CRA files
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "engr", "index.html")); // Main page for Engr
+});
+
+// Serve Vite Admin frontend
+app.use("/admin", express.static(path.join(__dirname, "admin"))); // Serve the built Vite files
+app.get("/admin/*", (req, res) => {
+  res.sendFile(path.join(__dirname, "admin", "index.html")); // Admin page
+});
+
 
 // API Creation
 
