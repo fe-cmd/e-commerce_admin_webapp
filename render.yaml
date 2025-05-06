@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: e-commerce_admin_webapp
+    env: node
+    rootDir: backend_engr
+    buildCommand: |
+      cd ../admin && npm install && npm run build && mv dist ../backend_engr/admin
+      cd ../engr && npm install && npm run build && mv build ../backend_engr/engr
+      cd ../backend_engr && npm install
+    startCommand:  npm start
+    autoDeploy: true
