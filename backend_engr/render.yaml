@@ -7,5 +7,5 @@ services:
       cd ../admin && npm install && npm run build && mv dist ../backend-engr/admin
       cd ../engr && npm install && npm run build && mv build ../backend-engr/engr
       cd ../backend-engr && npm install
-    startCommand: node index.js
+    startCommand:  npm start
     autoDeploy: true
