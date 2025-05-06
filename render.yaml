@@ -1,9 +1,10 @@
 services:
   - type: web
-    name: e-commerce_admin_webapp
+    name: backend_engr
     env: node
-    rootDir: backend_engr
     buildCommand: |
-      cd ../admin && npm install && npm run build
-      cd ../engr && npm install && npm run build
-    startCommand:  npm start
+      cd backend_engr && npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: MONGO_URI
+        value: "mongodb+srv://oluferonmijoshua:giF4BZ99DIiDogca@cluster0.11f1d.mongodb.net/e-commerce"

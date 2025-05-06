@@ -10,10 +10,13 @@ const cors = require("cors");
 app.use(express.json());
 app.use(cors());
 
-//Database Connect With MongoDB
-mongoose.connect("mongodb+srv://oluferonmijoshua:giF4BZ99DIiDogca@cluster0.11f1d.mongodb.net/e-commerce")
+const mongoURI = process.env.MONGO_URI;
 
-// Serve CRA frontend (Engr)
+mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log("MongoDB Connected"))
+  .catch(err => console.log(err));
+  
+  // Serve CRA frontend (Engr)
 app.use(express.static(path.join(__dirname, "engr"))); // Serve the built CRA files
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "engr", "index.html")); // Main page for Engr
