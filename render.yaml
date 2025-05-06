@@ -4,8 +4,6 @@ services:
     env: node
     rootDir: backend_engr
     buildCommand: |
-      cd ../admin && npm install && npm run build && mv dist ../backend_engr/admin
-      cd ../engr && npm install && npm run build && mv build ../backend_engr/engr
-      cd ../backend_engr && npm install
+      cd ../admin && npm install && npm run build
+      cd ../engr && npm install && npm run build
     startCommand:  npm start
-    autoDeploy: true
